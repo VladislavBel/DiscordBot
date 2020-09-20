@@ -1,6 +1,14 @@
+import pip
+def install(package):
+    if hasattr(pip, 'main'):
+        pip.main(['install', package])
+    else:
+        pip._internal.main(['install', package])
+install('discord')
 import discord
 import time
 import asyncio
+from ChatAI import chat
 
 
 def read_token():
@@ -66,6 +74,10 @@ async def on_message(message):
         for member in members:
             mem_status[str(member.status)] += 1
         await message.channel.send(f"""Online: {mem_status['online']},\nIdle/DND: {mem_status['idle']}/{mem_status['do not disturb']},\nOffline: {mem_status['offline']}.""")
+
+    elif message.content == ('Akagi chat'):
+
+        chat()
 
 client.loop.create_task(update_status())
 client.run(token)
