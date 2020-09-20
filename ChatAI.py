@@ -1,13 +1,5 @@
 import pip
-def install(package):
-    if hasattr(pip, 'main'):
-        pip.main(['install', package])
-    else:
-        pip._internal.main(['install', package])
-install('numpy')
-install('nltk')
-install('tflearn')
-install('tensorflow==1.14')
+
 import nltk
 from nltk.stem.lancaster import LancasterStemmer
 nltk.download('punkt')
